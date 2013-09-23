@@ -13,6 +13,6 @@ ADD docker_files/redis.conf /etc/redis/redis.conf
 ADD docker_files/docker.conf /etc/supervisor/conf.d/
 ADD docker_files/start /start
 
-EXPOSE 6379
+EXPOSE 6379 9999
 
 CMD ["/start"]
