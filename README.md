@@ -15,5 +15,9 @@ supervisor listens on port 9999 (use `docker ps` to find out where
 that was mapped).  The username is `docker` and the password is `d0ck3r`.  
 You can change these in `docker.conf` before building the container.
 
+All of my containers launch internal static IPs via [pipework](https://github.com/oskapt/pipework),
+which you can adjust via the top of the `run.sh` file or with the `-i`
+option.
+
 Enjoy.
 
