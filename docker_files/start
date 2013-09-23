@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# We couldn't set this during the build, so we'll set it now
+echo "production: redis://${REDIS_HOST}:6379" > /home/git/gitlab/config/resque.yml
+chown git /home/git/gitlab/config/resque.yml
+
+sed -ie "s/REDIS_HOST/${REDIS_HOST}/" /home/git/gitlab-shell/config.yml 
+chown git /home/git/gitlab-shell/config.yml
+
+chmod -R ug+rwX,o-rwx /home/git/repositories
+find /home/git/repositories -type d -print0 | xargs -0 chmod g+s
+
+/usr/bin/supervisord -n
